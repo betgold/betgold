@@ -1,0 +1,172 @@
+<div>
+	<h4 class="header">Gerenciamento de Jogos</h4>
+	<div class="divider"></div>
+	<div class="card">
+		<div class="card-content">
+			<div class="row" ng-show="!$ctrl.showForm">
+				<div class="col s12">
+					<div class="right">             
+						<button ng-click="$ctrl.showForm = true" class="btn green waves-effect waves-light " type="submit" name="action">Criar
+							<i class="mdi-content-add right"></i>
+						</button>
+						<button class="btn red waves-effect waves-light " type="submit" name="action">
+							Apagar
+							<i class="mdi-action-highlight-remove right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<form ng-show="$ctrl.showForm">
+				<h4 class="header2">Dados Do Jogo</h4>
+				<div class="row">
+
+					<div class="input-field col s12 l2">
+						<input ng-model="$ctrl.jogo.casa" id="time-casa" type="text" class="validate">
+						<label for="time-casa" class="">Time Casa</label>
+					</div>
+					<div class="input-field col s12 l2">
+						<input ng-model="$ctrl.jogo.fora" id="time-fora" type="text" class="validate">
+						<label for="time-fora" class="">Time Fora</label>
+					</div>
+					<div class="input-field col s12 l2">
+						<input ng-model="$ctrl.jogo.hora" id="hora" type="text" class="validate">
+						<label for="hora" class="">Hora</label>
+					</div>
+					<div class="input-field col s12 l3">
+						<input ng-model="$ctrl.jogo.data" type="date" class="datapiker" placeholder="Data">
+					</div>
+					<div class="input-field col s12 l3">
+						<select>
+							<option value="" disabled selected>Campeonatos</option>
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+							<option value="3">Option 3</option>
+						</select>
+						<label>Selecione o campeonato</label>
+					</div>
+				</div>
+				<h4 class="header2">BETS/ODDS</h4>
+				<div class="row">
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.bCasa" id="casa" type="text" class="validate">
+						<label for="casa" class="">CASA</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.emp" id="emp" type="text" class="validate">
+						<label for="emp" class="">EMP</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.bFora" id="fora" type="text" class="validate">
+						<label for="fora" class="">FORA</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.maGol" id="+gol" type="text" class="validate">
+						<label for="+gol" class="">+GOL</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.meGol" id="-gol" type="text" class="validate">
+						<label for="-gol" class="">-GOL</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.gmc" id="" type="text" class="validate">
+						<label for="" class="">GMC</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.gmf" id="" type="text" class="validate">
+						<label for="" class="">GMF</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.dpc" id="" type="text" class="validate">
+						<label for="" class="">DPC</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.dpf" id="" type="text" class="validate">
+						<label for="" class="">DPF</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.cof" id="" type="text" class="validate">
+						<label for="" class="">COF</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.ambm" id="" type="text" class="validate">
+						<label for="" class="">AMBM</label>
+					</div>
+					<div class="input-field col s6 l2">
+						<input ng-model="$ctrl.jogo.ambn" id="" type="text" class="validate">
+						<label for="" class="">AMBN</label>
+					</div>
+					<div class="col s12">
+						<div class="right">             
+							<button ng-click="$ctrl.addJogo()" class="btn cyan waves-effect waves-light ">
+								<i class="mdi-content-save"></i>
+							</button>
+							<button ng-click="addCancel()" class="btn red waves-effect waves-light ">
+								<i class="mdi-content-clear"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<br>
+			<div class="divider"></div>
+			<br>
+			<h4 class="header2">Tabela de Jogos</h4>
+			<table class="responsive-table bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Jogo</th>
+						<th>Data</th>
+						<th>Hora</th>
+						<th>Casa</th>
+						<th>Emp</th>
+						<th>Fora</th>
+						<th>+Gol</th>
+						<th>-Gol</th>
+						<th>GMC</th>
+						<th>GMF</th>
+						<th>Opções</th>
+					<!-- 	<th>DPC</th>
+						<th>DPF</th>
+						<th>ABMA</th>
+						<th>ABMN</th> -->
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="jogo in $ctrl.jogos">
+						<td>1</td>
+						<td>{{jogo.casa}} x {{jogo.fora}}</td>
+						<td>{{jogo.data | date:'dd-MM-YY'}}</td>
+						<td>{{jogo.hora}}</td>
+						<td>{{jogo.bCasa}}</td>
+						<td>{{jogo.emp}}</td>
+						<td>{{jogo.bFora}}</td>
+						<td>{{jogo.maGol}}</td>
+						<td>{{jogo.meGol}}</td>
+						<td>{{jogo.gmc}}</td>
+						<td>{{jogo.gmf}}</td>
+						<td>
+							<a ng-click="$ctrl.view" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
+							<a ng-click="$ctrl.edit(jogo)" class="btn-floating waves-effect waves-light verde"><i class="mdi-editor-border-color"></i></a>
+							<a ng-click="$ctrl.delete(jogo._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
+						</td>
+						<!-- <td>{{jogo.dpc}}</td>
+						<td>{{jogo.dpf}}</td>
+						<td>{{jogo.ambm}}</td>
+						<td>{{jogo.ambn}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</div>

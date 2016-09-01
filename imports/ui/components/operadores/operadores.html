@@ -1,0 +1,184 @@
+<div>
+	<h4 class="header">Gerenciamento de Operadores</h4>
+	<div class="divider"></div>
+	<div class="card">
+		<div class="card-content">
+			<div class="row" ng-show="true">
+				<div class="col s6">
+					<h4 class="header2">INFORMAÇÕES OPERADOR</h4>
+					<div class="row">
+						<div class="input-field col s12">
+							<input ng-model="$ctrl.op.nome" id="nome" type="text">
+							<label for="nome">Nome</label>
+						</div>
+						<div class="input-field col s6">
+							<input ng-model="$ctrl.op.regiao" id="regiao" type="text">
+							<label for="regiao">Região</label>
+						</div>
+						<div class="input-field col s6">
+							<input ng-model="$ctrl.op.fone" id="fone" type="text">
+							<label for="fone">Telefone</label>
+						</div>
+						<div class="input-field col s6">
+							<input ng-model="$ctrl.op.login" id="login" type="text">
+							<label for="login">Login</label>
+						</div>
+						<div class="input-field col s6">
+							<input ng-model="$ctrl.op.senha" id="senha" type="password">
+							<label for="senha">Senha</label>
+						</div>
+						<div class="col s6">
+							<div class="switch">
+							Bloqueado:
+							<br> 
+							<label>
+								Não
+								<input ng-model="$ctrl.op.status" type="checkbox">
+								<span class="lever"></span> 
+								Sim
+							</label>
+						</div>
+						</div>
+						<div class="col s6">
+							<div class="switch">
+							Gerente de Tabelas:
+							<br>  
+							<label>
+								Não
+								<input ng-model="$ctrl.op.gerente" type="checkbox">
+								<span class="lever"></span> 
+								Sim
+							</label>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="col s6">
+					<h4 class="header2">COMISSÕES - PARTIDA NORMAL</h4>
+					<div class="row">
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.nc" id="normal" type="text">
+							<label for="normal">COMISSÃO %</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.npm" id="pMax" type="text">
+							<label for="pMax">PREMIO MAX.</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.nam" id="aMax" type="text">
+							<label for="aMax">APOSTA MAX.</label>
+						</div>
+					</div>
+					<h4 class="header2">COMISSÕES - CASADINHA ATE 3 PARTIDAS</h4>
+					<div class="row">
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c3c" id="casadinha1" type="text">
+							<label for="casadinha1">COMISSÃO %</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c3pm" id="pMax1" type="text">
+							<label for="pMax1">PREMIO MAX.</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c3am" id="aMax1" type="text">
+							<label for="aMax1">APOSTA MAX.</label>
+						</div>
+					</div>
+					<h4 class="header2">COMISSÕES - CASADINHA DE 3 A 5 PARTIDAS</h4>
+					<div class="row">
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c35c" id="casadinha2" type="text">
+							<label for="casadinha2">COMISSÃO %</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c35pm" id="pMax2" type="text">
+							<label for="pMax2">PREMIO MAX.</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c35am" id="aMax2" type="text">
+							<label for="aMax2">APOSTA MAX.</label>
+						</div>
+					</div>	
+					<h4 class="header2">COMISSÕES - CASADINHA MAIS DE 5 PARTIDAS</h4>
+					<div class="row">
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c5c" id="casadinha3" type="text">
+							<label for="casadinha3">COMISSÃO %</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c5pm" id="pMax3" type="text">
+							<label for="pMax3">PREMIO MAX.</label>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.c5am" id="aMax3" type="text">
+							<label for="aMax3">APOSTA MAX.</label>
+						</div>
+					</div>							
+				</div>
+				<div class="col s12">
+					<div class="right">             
+						<button ng-click="$ctrl.save()" class="btn cyan waves-effect waves-light ">
+							<i class="mdi-content-save"></i>
+						</button>
+						<button ng-click="addCancel()" class="btn red waves-effect waves-light ">
+							<i class="mdi-content-clear"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" ng-show="!$ctrl.showForm">
+				<div class="col s12">
+					<div class="right">             
+						<button ng-click="$ctrl.showForm = true" class="btn green waves-effect waves-light " type="submit" name="action">NOVO
+							<i class="mdi-content-add right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="divider"></div>
+			<br>
+			<h4 class="header2">Tabela de Operadores</h4>
+			<table class="responsive-table bordered">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Login</th>
+						<th>Região</th>
+						<th>Telefone</th>
+						<th>Opções</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="op in $ctrl.operadores">
+						<td>1</td>
+						<td>{{op.nome}}</td>
+						<td>{{op.login}}</td>
+						<td>{{op.regiao}}</td>
+						<td>{{op.fone}}</td>
+						<td>
+						<a ng-click="$ctrl.view(op)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
+						<a ng-click="$ctrl.edit(op)" class="btn-floating waves-effect waves-light green"><i class="mdi-content-create"></i></a>
+						<a ng-click="$ctrl.delete(op._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div
+	</div>
+	<!-- Modal Structure -->
+	<div id="modal-op" class="modal">
+		<div class="modal-content">
+			<h4>Novo Operador</h4>
+			<hr>
+			<p>
+				<form>
+
+				</form>
+			</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,57 @@
+<div class="login container row">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="col s12">
+    <div id="card-login" class="card z-depth-4 animated bounceInDown">
+      <div class="card-content">
+        <div class="card-cep-header center">
+         <!-- <img src="/img/logo-nome2.png" style="width: 227px" class=""> -->
+         <p class="center login-form-text">DASHBOARD ADMINISTRATIVO BETGOLD</p>
+       </div>
+       <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">account_circle</i>
+              <input ng-model="$ctrl.credentials.email" id="icon_prefix" type="text" class="validate">
+              <label for="login">Login</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock_outline</i>
+              <input ng-model="$ctrl.credentials.password" id="senha" type="password" class="validate">
+              <label for="senha">Senha</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="center">
+       <div class="input-field">
+        <button ng-click="$ctrl.login()" class="btn waves-effect waves-light verde">Entrar<i class="material-icons right">send</i>
+        </button>
+      </div>
+      <div class="input-field">
+        <a href="">Recuperar senha?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<style>
+  .card{
+    margin: auto;
+    width: 320px;
+  }
+  body{
+    height: 100%;
+    background-image: url("./img/1.jpg");
+    background-position: center;
+    background-size: slength;
+    background-repeat: no-repeat;  
+  }
+</style>

@@ -1,0 +1,137 @@
+
+header, main, footer {
+    padding-left: 240px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+    }
+}
+@media only screen and (min-width: 993px){
+.container {
+    width: 98%;
+}}
+
+
+body{
+  background-color: #f9f9f9;
+}
+.text-nav{
+font-weight: 600;
+}
+@media only screen and (max-width: 993px){
+nav .brand-logo {
+    display: none;
+}}
+.parallax-container{
+    background: rgba(0,0,0,0.2);
+  }
+
+  .btn-flat.btn-sigin{
+    border: 1px solid #ffffff;
+  }
+
+.nav-prod ul a{
+        color: #fff;
+}
+
+.info-produto{
+    font-size: 1.2rem;
+    line-height: 3rem;
+    color: inherit;
+}
+
+html{
+  height: 100%;
+}
+
+.branco {
+    background-color: #F7F7F7 !important;
+}
+.cinza {
+    background-color: #DBDBDB !important;
+}
+.laranja {
+    background-color: #FEAA03 !important;
+}
+.preto {
+    background-color: #6B7762 !important;
+}
+.verde {
+    background-color: #43B02A !important;
+}
+.rosa {
+    background-color: #FF1044 !important;
+}
+
+/*input[type=password]:focus:not([readonly]){
+  border-bottom: 1px solid #3be219;
+  box-shadow: 0 1px 0 0 #3be219;
+}
+
+.input-filed .senha.active{
+  color: #3be219;
+}*/
+.side-nav .collapsible-body li a{
+  margin: 0px;
+}
+
+.side-nav{
+  width: 240px;
+}
+
+ul.side-nav.leftside-navigation:hover {
+    overflow: auto;
+}
+
+
+.side-nav::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.side-nav::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+.side-nav::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
+/*.input-field .prefix ~ input,
+.input-field .prefix ~ textarea {
+    margin-left: 3rem;
+    width: 93%;
+}*/
+
+/*
+.input-field input.input{
+      width: 100%;
+      padding: 0 15px;
+      height: 45px;
+      line-height: 50px;
+      margin: 0;
+      font-size: 14px;
+      box-sizing: border-box;
+      border: 2px solid #ABABAB;
+      outline: none;
+      color: #555;
+      border-radius: 5px;
+}
+
+.input label{
+  padding: 10px;
+}
+
+    input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) > .input{
+    border: 2px solid #26a69a;
+     box-shadow: 0 0px 0 0 #ff4081
+}*/
