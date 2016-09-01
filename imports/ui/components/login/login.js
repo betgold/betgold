@@ -10,14 +10,25 @@ class loginCtrl{
 		'ngInject';
 		$reactive(this).attach($scope);
 		this.state = $state;
+		this.loging = false;
 	}
 	login(){
-		Meteor.loginWithPassword(this.credentials.email, this.credentials.password,
+		this.loging = true;
+		Meteor.loginWithPassword(this.credentials.username, this.credentials.password,
 			this.$bindToContext((err) => {
 				if (err) {
 					console.log(err);
+					this.loging = false;
+					aler("Senha ou Usuário incorretos!")
 				} else {
-					this.state.go('home');
+					this.call('isAdmin', (err, result) => {
+						console.log(result);
+						if(result == true){
+							this.state.go('admin');
+						}else{
+							this.state.go('home');
+						}
+					});
 				}
 			})
 			);

@@ -24,8 +24,8 @@ export default angular.module(name, [
 	function config($stateProvider) {
 		'ngInject';
 		$stateProvider
-		.state('home', {
-			url: '/home',
+		.state('admin', {
+			url: '/admin',
 			template: '<admin></admin>'
 		});
 	}

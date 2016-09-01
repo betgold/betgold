@@ -17,7 +17,7 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">account_circle</i>
-              <input ng-model="$ctrl.credentials.email" id="icon_prefix" type="text" class="validate">
+              <input ng-model="$ctrl.credentials.username" id="icon_prefix" type="text" class="validate">
               <label for="login">Login</label>
             </div>
             <div class="input-field col s12">
@@ -29,15 +29,26 @@
         </form>
       </div>
       <div class="center">
-       <div class="input-field">
-        <button ng-click="$ctrl.login()" class="btn waves-effect waves-light verde">Entrar<i class="material-icons right">send</i>
-        </button>
-      </div>
-      <div class="input-field">
-        <a href="">Recuperar senha?</a>
+        <div ng-if="$ctrl.loging" class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
       </div>
     </div>
+    <div class="input-field">
+      <button ng-click="$ctrl.login()"  ng-if="!$ctrl.loging" class="btn waves-effect waves-light verde">Entrar<i class="material-icons right">send</i>
+      </button>
+    </div>
+    <div class="input-field">
+      <a href="">Recuperar senha?</a>
+    </div>
   </div>
+</div>
 </div>
 </div>
 </div>
