@@ -9,6 +9,13 @@ class sidebarCtrl{
 		$reactive(this).attach($scope);
 		this.init();
 		this.state = $state;
+		this.call('getUser', (err, result) => {
+			if (result) {
+				this.user = result
+			}else {
+				this.state.go('login');
+			}
+		});
 	}
 	init(){
 		$('.collapsible').collapsible();
