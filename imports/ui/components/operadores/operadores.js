@@ -4,7 +4,7 @@ import uiRouter from 'angular-ui-router';
 import template from './operadores.html';
 // API
 import { Operadores } from '../../../api/operadores/operadores.js';
-
+import { Bancas } from '../../../api/bancas/bancas.js';
 
 class operadoresCtrl{
 	constructor($scope,$reactive){
@@ -12,12 +12,24 @@ class operadoresCtrl{
 		$reactive(this).attach($scope);
 		this.helpers({
 			operadores () {
-				return Operadores.find();
+				return Operadores.find({});
 			}
 		});
 	}
 	save(){
-		Operadores.insert(this.op);
+		this.call('addOperador', this.op, this.login, (err, result) => {
+			console.log(result);
+			if (result) {
+				var $toastContent = $('<span>Operador adicionada!</span>');
+				Materialize.toast($toastContent, 5000);
+				this.op = {};
+				this.login = {};
+				this.showForm = false;
+			}else {
+				var $toastContent = $('<span>Erro verifique os campos ou tente outro usuário!</span>');
+				Materialize.toast($toastContent, 5000);
+			}
+		});
 	}
 	edit(op){
 		this.showForm = true;
