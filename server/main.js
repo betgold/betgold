@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 // API
 import '../imports/api/jogos/jogos.js';
 import '../imports/api/operadores/operadores.js';
+import '../imports/api/bancas/bancas.js';
 Meteor.startup(() => {
   
 });

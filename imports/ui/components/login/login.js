@@ -17,9 +17,9 @@ class loginCtrl{
 		Meteor.loginWithPassword(this.credentials.username, this.credentials.password,
 			this.$bindToContext((err) => {
 				if (err) {
+					alert("Senha ou Usuário incorretos!");
 					console.log(err);
 					this.loging = false;
-					aler("Senha ou Usuário incorretos!")
 				} else {
 					this.call('isAdmin', (err, result) => {
 						console.log(result);
