@@ -20,7 +20,11 @@ class jogosCtrl{
 	}
 	addJogo (){
 		if (this.ed) {
-			Jogos.update(this.jogo._id, {$set: this.jogo});
+			var jogo = angular.copy(this.jogo);
+			delete jogo._id;
+			Jogos.update(this.jogo._id, {
+				$set: jogo,
+			});
 			this.ed = false;
 		}else {
 			Jogos.insert(this.jogo);
