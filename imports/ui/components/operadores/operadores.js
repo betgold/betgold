@@ -7,7 +7,7 @@ import { Operadores } from '../../../api/operadores/operadores.js';
 import { Bancas } from '../../../api/bancas/bancas.js';
 
 class operadoresCtrl{
-	constructor($scope,$reactive){
+	constructor($scope,$reactive,$rootScope){
 		'ngInject';
 		$reactive(this).attach($scope);
 		this.helpers({

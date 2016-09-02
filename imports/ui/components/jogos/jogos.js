@@ -20,19 +20,23 @@ class jogosCtrl{
 	}
 	addJogo (){
 		if (this.ed) {
-			Jogos.update({id_: this.jogo._id}, this.jogo);
+			Jogos.update(this.jogo._id, {$set: this.jogo});
+			this.ed = false;
 		}else {
 			Jogos.insert(this.jogo);
 		}
 		this.jogo = {};
+		this.showForm = true;
 	}
 	view (jogo){
-
+		$('#modal').openModal();
+		this.jogoV = jogo;
 	}
 	edit (jg){
 		this.jogo = jg;
 		this.showForm = true;
 		this.ed = true;
+		$('label').addClass('active');
 	}
 	delete (id){
 		Jogos.remove({_id: id});

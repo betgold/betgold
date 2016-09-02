@@ -147,7 +147,7 @@
 						<td>{{jogo.gmc}}</td>
 						<td>{{jogo.gmf}}</td>
 						<td>
-							<a ng-click="$ctrl.view" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
+							<a ng-click="$ctrl.view(jogo)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
 							<a ng-click="$ctrl.edit(jogo)" class="btn-floating waves-effect waves-light verde"><i class="mdi-editor-border-color"></i></a>
 							<a ng-click="$ctrl.delete(jogo._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
 						</td>
@@ -160,13 +160,73 @@
 			</table>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </div>
+
+<div id="modal" class="modal">
+	<div class="modal-content">
+	<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close right"><i class="mdi-navigation-cancel"></i></a>
+		<h4>Detalhes do jogo</h4>
+		<p>{{$ctrl.jogoV.casa}} x {{$ctrl.jogoV.fora}}</p>
+		<p>Data/Hora: {{$ctrl.jogoV.data | date:'dd-MM-YY'}} - {{$ctrl.jogoV.hora}}</p>
+		<p>Código: {{$ctrl.jogoV._id}}</p>
+		<table class="table table-striped table-hover"> 
+			<thead> 
+				<tr> 
+				<td><strong>ODD</strong></td> 
+					<td><strong>Cotação</strong></td> 
+				</tr> 
+			</thead> 
+			<tbody> 
+				<tr> 
+					<td>
+					<strong>Casa</strong>
+					</td> 
+					<td>{{$ctrl.jogoV.bCasa}}</td> 
+				</tr>
+				<tr>
+					<th><strong>Empate</strong></th>
+					<td>{{$ctrl.jogoV.emp}}</th>
+				</tr>
+				<tr>
+					<th><strong>Fora</strong></th>
+					<td>{{$ctrl.jogoV.bFora}}</th>
+				</tr>
+				<tr>
+					<th><strong>+Gol</strong></th>
+					<td>{{$ctrl.jogoV.maGol}}</th>
+				</tr>
+				<tr>
+					<th><strong>-Gol</strong></th>
+					<td>{{$ctrl.jogoV.meGol}}</th>
+				</tr>
+				<tr>
+					<th><strong>GMC</strong></th>
+					<td>{{$ctrl.jogoV.gmc}}</th>
+				</tr>
+				<tr>
+					<th><strong>GMF</strong></th>
+					<td>{{$ctrl.jogoV.gmf}}</th>
+				</tr>
+				<tr>
+					<th><strong>DPC</strong></th>
+					<td>{{$ctrl.jogoV.dpc}}</th>
+				</tr>
+				<tr>
+					<th><strong>DPF</strong></th>
+					<td>{{$ctrl.jogoV.dpf}}</th>
+				</tr>
+				<tr>
+					<th><strong>ABMA</strong></th>
+					<td>{{$ctrl.jogoV.ambm}}</th>
+				</tr>
+				<tr>
+					<th><strong>ABN</strong></th>
+					<td>{{$ctrl.jogoV.ambn}}</th>
+				</tr>
+				</tbody> 
+				</table>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="waves-effect waves-green btn-flat modal-action modal-close right"><i class="mdi-navigation-cancel"></i></a>
+			</div>
+		</div>
