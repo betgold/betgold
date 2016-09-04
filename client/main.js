@@ -11,6 +11,7 @@ import operadores from '../imports/ui/components/operadores/operadores';
 import caixa from '../imports/ui/components/caixa/caixa';
 import mapa from '../imports/ui/components/mapa/mapa';
 import dashboard from '../imports/ui/components/dashboard/dashboard';
+import importJogos from '../imports/ui/components/importJogos/importJogos';
 
 // admin
 import admin from '../imports/admin/ui/components/admin/admin';
@@ -30,7 +31,8 @@ angular.module("app", [
 	caixa.name,
 	mapa.name,
 	dashboard.name,
-	bancas.name
+	bancas.name,
+	importJogos.name
 	]).config(config);
 
 function config($locationProvider, $urlRouterProvider) {
@@ -40,3 +42,7 @@ function config($locationProvider, $urlRouterProvider) {
  
   $urlRouterProvider.otherwise('/login');
 }
+
+Meteor.startup(function() {
+  Uploader.uploadUrl = Meteor.absoluteUrl("upload"); // Cordova needs absolute URL
+});

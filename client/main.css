@@ -32,3 +32,19 @@
   src: url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.eot?") format("embedded-opentype"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.woff") format("woff"), url("packages/materialize_materialize/dist/fonts/roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
 }
+
+ul.side-nav.leftside-navigation:hover {
+    overflow: auto;
+}
+
+
+.side-nav::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+}
+.side-nav::-webkit-scrollbar {
+    width: 6px;
+    background: #F4F4F4;
+}
+.side-nav::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+}
