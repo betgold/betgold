@@ -5,6 +5,7 @@ import uiRouter from 'angular-ui-router';
 import template from './jogos.html';
 
 import { Jogos } from '../../../api/jogos/jogos.js';
+import { Bancas } from '../../../api/bancas/bancas.js';
 
 class jogosCtrl{
 	constructor($scope,$reactive){
@@ -15,8 +16,8 @@ class jogosCtrl{
 		this.campeonatos = [{desc: 'camp1'},{desc: 'camp1'},{desc: 'camp1'}];
 		this.init();
 		this.helpers({
-			jogos () {
-				return Jogos.find({});
+			banca () {
+				return Bancas.findOne({adminId: Meteor.userId()}, {fields: {jogos: 1}});
 			}
 		});
 	}
@@ -32,7 +33,10 @@ class jogosCtrl{
 			});
 			this.ed = false;
 		}else {
-			Jogos.insert(this.jogo);
+			this.call('addJogo', this.jogo, (err, result) => {
+				console.log(result);
+				console.log(err);
+			});
 		}
 		this.jogo = {};
 		this.showForm = true;
@@ -42,13 +46,13 @@ class jogosCtrl{
 		this.jogoV = jogo;
 	}
 	edit (jg){
-		this.jogo = jg;
-		this.showForm = true;
-		this.ed = true;
-		$('label').addClass('active');
+		// this.jogo = jg;
+		// this.showForm = true;
+		// this.ed = true;
+		// $('label').addClass('active');
 	}
 	delete (id){
-		Jogos.remove({_id: id});
+		// Jogos.remove({_id: id});
 	}
 }
 

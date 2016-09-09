@@ -136,7 +136,7 @@
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="jogo in $ctrl.jogos">
+					<tr ng-repeat="jogo in $ctrl.banca.jogos">
 						<td>{{$index}}</td>
 						<td>{{jogo.casa}} x {{jogo.fora}}</td>
 						<td>{{jogo.data | date:'dd-MM-YY'}}</td>

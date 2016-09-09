@@ -25,3 +25,5 @@ accounts-password
 fourseven:scss@=3.8.0_1
 materialize:materialize
 netanelgilad:excel
+aldeed:simple-schema
+aldeed:collection2

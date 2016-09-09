@@ -11,22 +11,22 @@ class importJogosCtrl{
 
 	}
 	sendData(){
-		var file = $('#table')[0].files[0];
-		if (!file) return;
+		// var file = $('#table')[0].files[0];
+		// if (!file) return;
 
-    	var reader = new FileReader(); //create a reader according to HTML5 File API
+  //   	var reader = new FileReader(); //create a reader according to HTML5 File API
 
-    	reader.onload = function(event){          
-      		var buffer = new Uint8Array(reader.result) // convert to binary
-      		Meteor.call('convert', buffer);
- 	 	}	
+  //   	reader.onload = function(event){          
+  //     		var buffer = new Uint8Array(reader.result) // convert to binary
+  //     		Meteor.call('convert', buffer);
+ 	//  	}	
 
-    	reader.readAsArrayBuffer(file); 
+  //   	reader.readAsArrayBuffer(file); 
     //read the file as arraybuffer
-		// var teste = '2';
-		// this.call('convert', teste, (err,result) => {
-		// 	this.jogos = result;
-		// });
+		var teste = '2';
+		this.call('convert', teste, (err,result) => {
+			this.jogos = result;
+		});
 	}
 }
 
