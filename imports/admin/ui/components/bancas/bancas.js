@@ -9,7 +9,7 @@ class bancasCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
-
+		this.ed = false;
 		this.helpers({
 			bancas () {
 				return Bancas.find();
@@ -18,27 +18,48 @@ class bancasCtrl{
 	}
 	save(){
 		this.banca.creditoMax = parseFloat(this.banca.creditoMax);
-		this.call('addBanca', this.banca, this.bancaAuth, (err, result) => {
-			if (result) {
-				var $toastContent = $('<span>Banca adicionada!</span>');
-				Materialize.toast($toastContent, 5000);
-				this.banca = {};
-				this.bancaAuth = {};
-				this.showForm = false;
-			}else {
-				var $toastContent = $('<span>Esse Usuário já esxiste, tente outro!</span>');
-				Materialize.toast($toastContent, 5000);
-			}
-		});
+		if (this.ed) {
+			var banca = angular.copy(this.banca);
+			delete banca._id;
+			Bancas.update(this.banca._id, {
+				$set: banca,
+			});
+			this.ed = false;
+			var $toastContent = $('<span>Banca editada!</span>');
+			Materialize.toast($toastContent, 5000);
+			this.showForm = false;
+			this.banca = {};
+		}else{
+			this.call('addBanca', this.banca, this.bancaAuth, (err, result) => {
+				if (result) {
+					var $toastContent = $('<span>Banca adicionada!</span>');
+					Materialize.toast($toastContent, 5000);
+					this.showForm = false;
+					this.banca = {};
+				}else {
+					var $toastContent = $('<span>Esse Usuário já esxiste, tente outro!</span>');
+					Materialize.toast($toastContent, 5000);
+				}
+			});
+		}
 	}
-	delete(id){
+	delete(banca){
 		var r = confirm("Deseijar remover essa banca");
 		if (r == true) {
-			Bancas.remove({_id: id});
-			var $toastContent = $('<span>Banca Removida!!</span>');
-			Materialize.toast($toastContent, 5000);
+			this.call('removeBanca', banca.adminId, (err, result) => {
+				if (result) {
+					Bancas.remove({_id: banca._id});
+					var $toastContent = $('<span>Banca Removida!!</span>');
+					Materialize.toast($toastContent, 5000);
+				}
+			});		
 		}
-
+	}
+	edit (banca){
+		this.banca = banca;
+		this.showForm = true;
+		this.ed = true;
+		$('label').addClass('active');
 	}
 }
 

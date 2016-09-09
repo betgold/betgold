@@ -6,11 +6,18 @@ Meteor.methods({
 		var userId = Accounts.createUser(login);
 		if (userId) {
 			banca.adminId = userId;
-			Bancas.insert(banca);
+			var bancaId = Bancas.insert(banca);
+			Meteor.users.update({_id: userId},{
+				$set: {bancaId: bancaId}
+			})
 			return true;
 		}else {
 			return false;
 		}
+	},
+	removeBanca (id){
+		Meteor.users.remove({_id: id});
+		return true;
 	},
 	addOperador: function (op,login) {
 		var userId = Accounts.createUser(login);
