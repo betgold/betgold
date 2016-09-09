@@ -4,7 +4,7 @@
 	<div class="card">
 		<div class="card-content">
 			<div class="row" ng-show="$ctrl.showForm">
-				<div class="col s12 l6">
+				<form class="col s12 l6" name="form">
 					<h4 class="header2">INFORMAÇÕES DA BANCA</h4>
 					<div class="row">
 						<div class="input-field col s12 l12">
@@ -28,7 +28,7 @@
 							<label for="regiao">Região</label>
 						</div>
 						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.credito" id="credito" type="text">
+							<input ng-model="$ctrl.banca.creditoMax" id="credito" type="text">
 							<label for="credito">Crédito Máximo</label>
 						</div>		
 						<div class="input-field col s12 l6">
@@ -52,7 +52,7 @@
 							<label for="obs">Observação</label>
 						</div>							
 					</div>
-				</div>
+				</form>
 				<div class="col s12 l6">
 					<h4 class="header2">LOGIN DA BANCA</h4>
 					<div class="input-field col s12">

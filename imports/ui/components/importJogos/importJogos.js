@@ -8,17 +8,25 @@ class importJogosCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
+
 	}
 	sendData(){
-		var table = $('#table')[0].files[0];
-		var reader = new FileReader();
-		table =reader.readAsArrayBuffer(table);
-		console.log(table);
-		var teste = '2';
-		this.call('convert', table, (err,result) => {
-			this.jogos = result;
-		});
-		console.log(this.jogos[10]);
+		var file = $('#table')[0].files[0];
+		if (!file) return;
+
+    	var reader = new FileReader(); //create a reader according to HTML5 File API
+
+    	reader.onload = function(event){          
+      		var buffer = new Uint8Array(reader.result) // convert to binary
+      		Meteor.call('convert', buffer);
+ 	 	}	
+
+    	reader.readAsArrayBuffer(file); 
+    //read the file as arraybuffer
+		// var teste = '2';
+		// this.call('convert', teste, (err,result) => {
+		// 	this.jogos = result;
+		// });
 	}
 }
 

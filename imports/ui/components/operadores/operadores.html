@@ -145,7 +145,6 @@
 					<tr>
 						<th>ID</th>
 						<th>Nome</th>
-						<th>Login</th>
 						<th>Região</th>
 						<th>Telefone</th>
 						<th>Opções</th>
@@ -153,10 +152,9 @@
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="op in $ctrl.operadores">
+					<tr ng-repeat="op in $ctrl.banca.operadores">
 						<td>1</td>
 						<td>{{op.nome}}</td>
-						<td>{{op.login}}</td>
 						<td>{{op.regiao}}</td>
 						<td>{{op.fone}}</td>
 						<td>

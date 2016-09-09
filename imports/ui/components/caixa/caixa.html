@@ -41,51 +41,71 @@
 		</div>
 		<div class="col l7 s12">
 			<div class="card-panel">
-				<form ng-show="$ctrl.showForm()">
+				<form ng-show="$ctrl.showForm">
 					<div class="row">
 						<div class="input-field col s12">
-							<input id="operador" type="text">
-							<label for="operador"></label>
-						</div>
-							<div class="input-field col s12">
-							<input id="operador" type="text">
-							<label for="operador"></label>
-						</div>
-							<div class="input-field col s12">
-							<input id="operador" type="text">
-							<label for="operador"></label>
-						</div>
-							<div class="input-field col s12">
-							<input id="operador" type="text">
-							<label for="operador"></label>
-						</div>
+							<select ng-model="$ctrl.lancamento.op" 
+							ng-options="op as op.nome for op in $ctrl.banca.operadores" 
+							class="browser-default">
+							<option value="" disabled selected>Operador</option>				
+						</select>
 					</div>
-				</form>
-				<h4 class="header2">LANÇAMENTOS</h4>
-				<button ng-click="showForm = true" class="btn right green waves-effect waves-light ">LANÇAMENTO
-					<i class="mdi-content-add right"></i>
-				</button>
-				<br>
-				<table class="responsive-table">
-					<thead>
-						<tr>
-							<th>Operador</th>
-							<th>Data/Hora</th>
-							<th>Tipo</th>
-							<th>Valor R$</th>
-						</tr>
-					</thead>
-				
-					<tbody>
-						<tr>
-							<td>Admin</td>
-							<td>12/09/2016-12:00</td>
-							<td>Déito</td>
-							<td>R$ 100,00</td>
-						</tr>
-					</tbody>
-				</table>
+					<div class="input-field col s12">
+						<input id="data" type="date">
+						<label for="data" class="active">Data</label>
+					</div>
+					<div class="input-field col s12">
+						<input id="hora" type="text">
+						<label for="hora">Hora</label>
+					</div>
+					<div class="input-field col s12">
+						<select ng-model="$ctrl.lancamento.tipo" 
+						ng-options="tipo for tipo in $ctrl.tipos" 
+						class="browser-default">
+						<option value="" disabled selected>Tipo</option>				
+					</select>
+				</div>
+				<div class="input-field col s12">
+					<input id="valor" type="text">
+					<label for="valor">Valor R$</label>
+				</div>
+				<div class="col s12">
+					<div class="">
+						<button class="btn green waves-effect waves-light">salvar
+							<i class="mdi-content-add right"></i>
+						</button>
+						<button class="btn red waves-effect waves-light">cancelar
+							<i class="mdi-action-highlight-remove right"></i>
+						</button>         
+					</div>
+				</div>
 			</div>
-		</div>
+		</form>
+		<h4 class="header2">LANÇAMENTOS</h4>
+		<button ng-click="$ctrl.showForm = true" ng-show="!$ctrl.showForm" class="btn right green waves-effect waves-light ">LANÇAMENTO
+			<i class="mdi-content-add right"></i>
+		</button>
+		<br>
+		<table class="responsive-table">
+			<thead>
+				<tr>
+					<th>Operador</th>
+					<th>Data/Hora</th>
+					<th>Tipo</th>
+					<th>Valor R$</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Admin</td>
+					<td>12/09/2016-12:00</td>
+					<td>Déito</td>
+					<td>R$ 100,00</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+</div>
+</div>
 </div>

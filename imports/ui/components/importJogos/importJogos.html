@@ -1,13 +1,61 @@
-<form action="#">
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>File</span>
-        <input id="table" type="file" multiple>
+<div class="card">
+  <div class="card-content">
+    <form>
+      <div class="row">
+      <div class="file-field input-field col s6">
+          <div class="btn blue">
+            <span>Planilha</span>
+            <input id="table" type="file" multiple>
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Selecione sua planilha!">
+          </div>
+        </div>
+        <div class="input-field col s6">
+            <button ng-click="$ctrl.sendData(event)" class="btn green">Enviar</button>
+        </div>
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-      </div>
-    </div>
-  </form>
-  
-  <button ng-click="$ctrl.sendData()" class="btn">Importa</button>
+    </form>
+    <div class="divider"></div>
+      <br>
+      <h4 class="header2">Tabela de Jogos</h4>
+      <table class="responsive-table bordered">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Jogo</th>
+            <!-- <th>Data</th> -->
+            <th>Hora</th>
+            <th>Casa</th>
+            <th>Emp</th>
+            <th>Fora</th>
+            <th>+2.5</th>
+            <th>-2.5</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="jogo in $ctrl.jogos">
+            <td>{{jogo.n}}</td>
+            <td>{{jogo.casa}} x {{jogo.fora}}</td>
+            <!-- <td>{{jogo.data | date:'dd-MM-YY'}}</td> -->
+            <td>{{jogo.hora}}</td>
+            <td>{{jogo.bCasa}}</td>
+            <td>{{jogo.emp}}</td>
+            <td>{{jogo.bFora}}</td>
+            <td>{{jogo.ma25}}</td>
+             <td>{{jogo.me25}}</td>
+            <td>
+              <a ng-click="$ctrl.view(jogo)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
+              <a ng-click="$ctrl.edit(jogo)" class="btn-floating waves-effect waves-light verde"><i class="mdi-editor-border-color"></i></a>
+              <a ng-click="$ctrl.delete(jogo._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
+            </td>
+            <!-- <td>{{jogo.dpc}}</td>
+            <td>{{jogo.dpf}}</td>
+            <td>{{jogo.ambm}}</td>
+            <td>{{jogo.ambn}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>

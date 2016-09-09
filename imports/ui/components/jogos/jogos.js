@@ -12,11 +12,16 @@ class jogosCtrl{
 		$reactive(this).attach($scope);
 		this.showForm = false;
 		this.ed       = false;
+		this.campeonatos = [{desc: 'camp1'},{desc: 'camp1'},{desc: 'camp1'}];
+		this.init();
 		this.helpers({
 			jogos () {
 				return Jogos.find({});
 			}
 		});
+	}
+	init (){
+		$('select').material_select();
 	}
 	addJogo (){
 		if (this.ed) {

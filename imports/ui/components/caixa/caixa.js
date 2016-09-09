@@ -3,11 +3,21 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './caixa.html';
+import { Bancas } from '../../../api/bancas/bancas.js';
+
 
 class caixaCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
+		this.helpers({
+			banca () {
+				return Bancas.findOne({userId: Meteor.userId()});
+			},
+			tipos (){
+				return ["Entrada","Saida"]
+			}
+		});
 	}
 }
 

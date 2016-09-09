@@ -17,7 +17,7 @@ import importJogos from '../imports/ui/components/importJogos/importJogos';
 import admin from '../imports/admin/ui/components/admin/admin';
 import sidebarAdmin from '../imports/admin/ui/components/sidebar/sidebar';
 import bancas from '../imports/admin/ui/components/bancas/bancas';
-
+ 
 angular.module("app", [
 	angularMeteor,
 	uiRouter,

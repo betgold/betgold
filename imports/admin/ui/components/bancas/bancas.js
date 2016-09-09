@@ -17,8 +17,8 @@ class bancasCtrl{
 		});
 	}
 	save(){
+		this.banca.creditoMax = parseFloat(this.banca.creditoMax);
 		this.call('addBanca', this.banca, this.bancaAuth, (err, result) => {
-			console.log(result);
 			if (result) {
 				var $toastContent = $('<span>Banca adicionada!</span>');
 				Materialize.toast($toastContent, 5000);
@@ -26,7 +26,7 @@ class bancasCtrl{
 				this.bancaAuth = {};
 				this.showForm = false;
 			}else {
-				var $toastContent = $('<span>Erro verifique os campos ou tente outro usuário!</span>');
+				var $toastContent = $('<span>Esse Usuário já esxiste, tente outro!</span>');
 				Materialize.toast($toastContent, 5000);
 			}
 		});

@@ -3,7 +3,6 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import template from './operadores.html';
 // API
-import { Operadores } from '../../../api/operadores/operadores.js';
 import { Bancas } from '../../../api/bancas/bancas.js';
 
 class operadoresCtrl{
@@ -11,8 +10,8 @@ class operadoresCtrl{
 		'ngInject';
 		$reactive(this).attach($scope);
 		this.helpers({
-			operadores () {
-				return Operadores.find({});
+			banca () {
+				return Bancas.findOne({userId: Meteor.userId()});
 			}
 		});
 	}
