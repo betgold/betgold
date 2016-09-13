@@ -3,12 +3,16 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './importJogos.html';
-
+import { Jogos } from '../../../api/jogos/jogos.js';
 class importJogosCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
-
+		this.helpers({
+			jogos () {
+				return Jogos.find();
+			}
+		});
 	}
 	sendData(){
 		// var file = $('#table')[0].files[0];
@@ -25,8 +29,13 @@ class importJogosCtrl{
     //read the file as arraybuffer
 		var teste = '2';
 		this.call('convert', teste, (err,result) => {
-			this.jogos = result;
+			for (var i = 0; result.length ; i++) {
+				Jogos.insert(result[i]);
+			}
 		});
+	}
+	delete (id){
+		Jogos.remove({_id: id});
 	}
 }
 

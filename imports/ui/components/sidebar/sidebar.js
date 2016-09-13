@@ -12,6 +12,7 @@ class sidebarCtrl{
 		this.call('getUser', (err, result) => {
 			if (result) {
 				this.user = result;
+				user = result;
 			}else {
 				this.state.go('login');
 			}

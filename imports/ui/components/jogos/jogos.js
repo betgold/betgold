@@ -15,9 +15,17 @@ class jogosCtrl{
 		this.ed       = false;
 		this.campeonatos = [{desc: 'camp1'},{desc: 'camp1'},{desc: 'camp1'}];
 		this.init();
+		this.call('getUser', (err, result) => {
+			if (result) {
+				this.user = result;
+				user = result;
+			}else {
+				this.state.go('login');
+			}
+		});
 		this.helpers({
-			banca () {
-				return Bancas.findOne({adminId: Meteor.userId()}, {fields: {jogos: 1}});
+			jogos () {
+				return Jogos.find();
 			}
 		});
 	}
@@ -33,13 +41,11 @@ class jogosCtrl{
 			});
 			this.ed = false;
 		}else {
-			this.call('addJogo', this.jogo, (err, result) => {
-				console.log(result);
-				console.log(err);
-			});
+			this.jogo.bancaId = user.bancaId;
+			Jogos.insert(this.jogo);
 		}
+		this.showForm = false;
 		this.jogo = {};
-		this.showForm = true;
 	}
 	view (jogo){
 		$('#modal').openModal();
@@ -52,7 +58,7 @@ class jogosCtrl{
 		// $('label').addClass('active');
 	}
 	delete (id){
-		// Jogos.remove({_id: id});
+		Jogos.remove({_id: id});
 	}
 }
 

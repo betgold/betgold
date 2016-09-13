@@ -11,7 +11,8 @@ class sidebarCtrl{
 		this.state = $state;
 		this.call('getUser', (err, result) => {
 			if (result) {
-				this.user = result
+				this.user = result;
+				user = result;
 			}else {
 				this.state.go('login');
 			}
