@@ -19,6 +19,11 @@
     <div class="divider"></div>
       <br>
       <h4 class="header2">Tabela de Jogos</h4>
+      <div class="row">
+        <div class="input-field col s6">
+          <input ng-model="$ctrl.filter" type="text" placeholder="Pesquisar...">
+        </div>
+      </div>
       <table class="responsive-table bordered">
         <thead>
           <tr>
@@ -35,7 +40,7 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="jogo in $ctrl.jogos">
+          <tr ng-repeat="jogo in $ctrl.jogos | filter: $ctrl.filter">
             <td>{{jogo.n}}</td>
             <td>{{jogo.casa}} x {{jogo.fora}}</td>
             <!-- <td>{{jogo.data | date:'dd-MM-YY'}}</td> -->

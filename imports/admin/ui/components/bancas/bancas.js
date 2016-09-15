@@ -18,6 +18,9 @@ class bancasCtrl{
 	}
 	save(){
 		this.banca.creditoMax = parseFloat(this.banca.creditoMax);
+		this.banca.ativo = true;
+		this.banca.username = this.bancaAuth.username;
+		this.banca.password = this.bancaAuth.password;
 		if (this.ed) {
 			var banca = angular.copy(this.banca);
 			delete banca._id;
@@ -60,6 +63,12 @@ class bancasCtrl{
 		this.showForm = true;
 		this.ed = true;
 		$('label').addClass('active');
+	}
+	status(banca){
+		s = banca.ativo;
+		Bancas.update({_id: banca._id},{
+			$set: {ativo: banca.ativo}
+		});
 	}
 }
 

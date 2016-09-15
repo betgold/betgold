@@ -23,7 +23,6 @@
 			<form ng-show="$ctrl.showForm">
 				<h4 class="header2">Dados Do Jogo</h4>
 				<div class="row">
-
 					<div class="input-field col s12 l2">
 						<input ng-model="$ctrl.jogo.casa" id="time-casa" type="text" class="validate">
 						<label for="time-casa" class="">Time Casa</label>
@@ -113,6 +112,11 @@
 			<div class="divider"></div>
 			<br>
 			<h4 class="header2">Tabela de Jogos</h4>
+			<div class="row">
+				<div class="input-field col s6">
+					<input ng-model="$ctrl.filter" type="text" placeholder="Pesquisar...">
+				</div>
+			</div>
 			<table class="responsive-table bordered">
 				<thead>
 					<tr>
@@ -136,7 +140,7 @@
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="jogo in $ctrl.jogos">
+					<tr ng-repeat="jogo in $ctrl.jogos | filter: $ctrl.filter">
 						<td>{{$index}}</td>
 						<td>{{jogo.casa}} x {{jogo.fora}}</td>
 						<td>{{jogo.data | date:'dd-MM-YY'}}</td>

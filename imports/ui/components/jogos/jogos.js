@@ -8,24 +8,22 @@ import { Jogos } from '../../../api/jogos/jogos.js';
 import { Bancas } from '../../../api/bancas/bancas.js';
 
 class jogosCtrl{
-	constructor($scope,$reactive){
+	constructor($scope,$reactive,$rootScope,$state){
 		'ngInject';
 		$reactive(this).attach($scope);
+		this.state = $state;
+		try {
+			this.bancaId = $rootScope.user.bancaId;
+		} catch(e) {
+			this.state.go('home');
+		}
 		this.showForm = false;
 		this.ed       = false;
 		this.campeonatos = [{desc: 'camp1'},{desc: 'camp1'},{desc: 'camp1'}];
 		this.init();
-		this.call('getUser', (err, result) => {
-			if (result) {
-				this.user = result;
-				user = result;
-			}else {
-				this.state.go('login');
-			}
-		});
 		this.helpers({
 			jogos () {
-				return Jogos.find();
+				return Jogos.find({bancaId: $rootScope.user.bancaId});
 			}
 		});
 	}
@@ -41,7 +39,7 @@ class jogosCtrl{
 			});
 			this.ed = false;
 		}else {
-			this.jogo.bancaId = user.bancaId;
+			this.jogo.bancaId = this.bancaId;
 			Jogos.insert(this.jogo);
 		}
 		this.showForm = false;

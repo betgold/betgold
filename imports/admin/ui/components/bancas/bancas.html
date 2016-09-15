@@ -3,79 +3,91 @@
 	<div class="divider"></div>
 	<div class="card">
 		<div class="card-content">
-			<div class="row" ng-show="$ctrl.showForm">
-				<form class="col s12 l6" name="form">
-					<h4 class="header2">INFORMAÇÕES DA BANCA</h4>
-					<div class="row">
-						<div class="input-field col s12 l12">
-							<input ng-model="$ctrl.banca.nome" id="nome" type="text">
-							<label for="nome">Nome da Empresa</label>
+			<form name="form">
+				<div class="row" ng-show="$ctrl.showForm">
+					<div class="col s12 l6">
+						<h4 class="header2">INFORMAÇÕES DA BANCA</h4>
+						<div class="row">
+							<div class="input-field col s12 l12">
+								<input ng-model="$ctrl.banca.nome" id="nome" type="text" ng-required="true">
+								<label for="nome">Nome da Empresa</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.endereco" id="endereco" type="text">
+								<label for="endereco">Endereço</label>
+							</div>
+							<div class="input-field col s12 l4">
+								<input ng-model="$ctrl.banca.cidade" id="city" type="text">
+								<label for="city">Cidade</label>
+							</div>
+							<div class="input-field col s12 l2">
+								<input ng-model="$ctrl.banca.uf" id="uf" type="text">
+								<label for="uf">Estado</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.regiao" id="regiao" type="text">
+								<label for="regiao">Região</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.credMax" id="credito" type="text" ng-required="true",>
+								<label for="credito">Crédito Máximo</label>
+							</div>		
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.whats" id="whats" type="text">
+								<label for="whats">WhatsApp</label>
+							</div>	
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.telegram" id="telegram" type="text">
+								<label for="telegram">Telegram</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.fixo" id="fixo" type="text">
+								<label for="fixo">Fixo</label>
+							</div>
+							<div class="input-field col s12 l6">
+								<input ng-model="$ctrl.banca.email" id="email" type="text">
+								<label for="email">Email</label>
+							</div>
+							<div class="input-field col s12 l12">
+								<input ng-model="$ctrl.banca.obs" id="obs" type="text">
+								<label for="obs">Observação</label>
+							</div>							
 						</div>
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.endereco" id="endereco" type="text">
-							<label for="endereco">Endereço</label>
-						</div>
-						<div class="input-field col s12 l4">
-							<input ng-model="$ctrl.banca.cidade" id="city" type="text">
-							<label for="city">Cidade</label>
-						</div>
-						<div class="input-field col s12 l2">
-							<input ng-model="$ctrl.banca.uf" id="uf" type="text">
-							<label for="uf">Estado</label>
-						</div>
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.regiao" id="regiao" type="text">
-							<label for="regiao">Região</label>
-						</div>
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.credMax" id="credito" type="text">
-							<label for="credito">Crédito Máximo</label>
-						</div>		
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.whats" id="whats" type="text">
-							<label for="whats">WhatsApp</label>
-						</div>	
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.telegram" id="telegram" type="text">
-							<label for="telegram">Telegram</label>
-						</div>
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.fixo" id="fixo" type="text">
-							<label for="fixo">Fixo</label>
-						</div>
-						<div class="input-field col s12 l6">
-							<input ng-model="$ctrl.banca.email" id="email" type="text">
-							<label for="email">Email</label>
-						</div>
-						<div class="input-field col s12 l12">
-							<input ng-model="$ctrl.banca.obs" id="obs" type="text">
-							<label for="obs">Observação</label>
-						</div>							
 					</div>
-				</form>
-				<div class="col s12 l6" ng-show="!$ctrl.ed">
-					<h4 class="header2">LOGIN DA BANCA</h4>
-					<div class="input-field col s12">
-						<input ng-model="$ctrl.bancaAuth.username" id="username" type="text">
-						<label for="username">Login</label>
-					</div>	
-					<div class="input-field col s12">
-						<input ng-model="$ctrl.bancaAuth.password" id="password" type="password">
-						<label for="password">Senha</label>
-					</div>						
-				</div>
-				<div class="col s12">
-					<div class="right">             
-						<button ng-click="$ctrl.save()" class="btn cyan waves-effect waves-light ">
-							<i class="mdi-content-save"></i>
-						</button>
-						<button ng-click="$ctrl.banca = {}; $ctrl.showForm = false" class="btn red waves-effect waves-light ">
-							<i class="mdi-content-clear"></i>
-						</button>
+					<div class="col s12 l6">
+						<div ng-show="!$ctrl.ed">
+							<h4 class="header2">  LOGIN DA BANCA</h4>
+							<div class="input-field col s12">
+								<input ng-model="$ctrl.bancaAuth.username" id="username" type="text" ng-required="true">
+								<label for="username">Login</label>
+							</div>	
+							<div class="input-field col s12">
+								<input ng-model="$ctrl.bancaAuth.password" id="password" type="password" ng-required="true">
+								<label for="password">Senha</label>
+							</div>
+						</div>
+						<h4 class="header2">  TIPO DE PLANO</h4>
+						<div class="input-field col s12">
+						<select ng-model="$ctrl.banca.plano" class="browser-default" ng-required="true">
+								<option value="" disabled selected>Tipo de plano</option>
+								<option value="1">Automático</option>
+								<option value="2">Importação/Tabela</option>
+								<option value="3">Manual</option>
+							</select>
+						</div>
+					</div>
+					<div class="col s12">
+						<div class="right">             
+							<button ng-click="$ctrl.save()" ng-disabled="form.$invalid" class="btn cyan waves-effect waves-light ">
+								<i class="mdi-content-save"></i>
+							</button>
+							<button ng-click="$ctrl.banca = {}; $ctrl.showForm = false" class="btn red waves-effect waves-light ">
+								<i class="mdi-content-clear"></i>
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-
+			</form>
 			<div class="row" ng-show="!$ctrl.showForm">
 				<div class="col s12">
 					<div class="right">             
@@ -89,6 +101,11 @@
 			<div class="divider"></div>
 			<br>
 			<h4 class="header2">Tabela de Bancas</h4>
+			<div class="row">
+				<div class="input-field col s6">
+					<input ng-model="$ctrl.filter" type="text" placeholder="Pesquisar...">
+				</div>
+			</div>
 			<table class="responsive-table bordered">
 				<thead>
 					<tr>
@@ -96,20 +113,27 @@
 						<th>Nome</th>
 						<th>Região</th>
 						<th>whatsapp</th>
-						<th>Fixo</th>
 						<th>Crédito M.</th>
+						<th>Login</th>
+						<th>Senha</th>
+						<th>Ativo</th>
 						<th>Opções</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<tr ng-repeat="banca in $ctrl.bancas">
+					<tr ng-repeat="banca in $ctrl.bancas | filter: $ctrl.filter">
 
 						<td>{{banca.nome}}</td>
 						<td>{{banca.regiao}}</td>
 						<td>{{banca.whats}}</td>
-						<td>{{banca.fone}}</td>
 						<td>{{banca.credito}}</td>
+						<td>{{banca.username}}</td>
+						<td>{{banca.password}}</td>
+						<td>
+							<input ng-click="$ctrl.status(banca)" ng-model="banca.ativo" type="checkbox" id="test{{$index}}"/>
+							<label for="test{{$index}}"></label>
+						</td>
 						<td>
 							<a ng-click="$ctrl.edit(banca)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
 							<a ng-click="$ctrl.edit(banca)" class="btn-floating waves-effect waves-light green"><i class="mdi-content-create"></i></a>
