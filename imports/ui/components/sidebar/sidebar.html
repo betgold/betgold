@@ -46,31 +46,32 @@
                 </div>
             </div>
             </li>
-            <li class="bold"><a ui-sref="home.dashboard" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Inicio</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.dashboard" class="waves-effect waves-cyan"><i class="mdi-action-home"></i> Inicio</a>
             </li>
-            <li class="bold"><a ui-sref="home.caixa" class="waves-effect waves-cyan"><i class="mdi-action-receipt"></i> Caixa</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.caixa" class="waves-effect waves-cyan"><i class="mdi-action-receipt"></i> Caixa</a>
             </li>
-            <li class="bold"><a ui-sref="home.caixas" class="waves-effect waves-cyan"><i class="mdi-action-account-balance-wallet"></i> Caixa Operadores</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.caixas" class="waves-effect waves-cyan"><i class="mdi-action-account-balance-wallet"></i> Caixa Operadores</a>
+            <li ng-show="!$ctrl.admin" class="bold"><a ui-sref="home.caixas" class="waves-effect waves-cyan"><i class="mdi-action-account-balance-wallet"></i> Meu Caixa</a>
             </li>
-            <li class="bold"><a ui-sref="home.mapa" class="waves-effect waves-cyan"><i class="mdi-maps-local-library"></i> Mapa de Apostas</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.mapa" class="waves-effect waves-cyan"><i class="mdi-maps-local-library"></i> Mapa de Apostas</a>
             </li>
-            <li class="bold"><a ui-sref="home.operadores" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i> Operadores</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.operadores" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i> Operadores</a>
             </li>
-            <li class="bold"><a ui-sref="home.index.html" class="waves-effect waves-cyan"><i class="mdi-action-settings"></i> Gerenciar</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.index.html" class="waves-effect waves-cyan"><i class="mdi-action-settings"></i> Gerenciar</a>
             </li>
-            <li class="bold"><a ui-sref="home.report" class="waves-effect waves-cyan"><i class="mdi- mdi-editor-insert-chart"></i> Relatórios</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.report" class="waves-effect waves-cyan"><i class="mdi- mdi-editor-insert-chart"></i> Relatórios</a>
             </li>
             <li class="bold"><a ui-sref="home.operadores" class="waves-effect waves-cyan"><i class="mdi-communication-live-help"></i> Apoio</a>
             </li>
             
-            <li class="bold"><a ui-sref="home.operadores" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i> Operadores</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.operadores" class="waves-effect waves-cyan"><i class="mdi-action-account-box"></i> Operadores</a>
             </li>
             
-            <li class="bold"><a ui-sref="home.premios" class="waves-effect waves-cyan"><i class="mdi-editor-attach-money"></i> Prêmios</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.premios" class="waves-effect waves-cyan"><i class="mdi-editor-attach-money"></i> Prêmios</a>
             </li>
             <li class="bold"><a ui-sref="home.jogos" class="waves-effect waves-cyan"><i class="mdi-hardware-gamepad" ></i> Jogos</a>
             </li>
-            <li class="bold"><a ui-sref="home.index.html" class="waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Tabelas</a>
+            <li ng-show="$ctrl.admin" class="bold"><a ui-sref="home.index.html" class="waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Tabelas</a>
             </li>
       </ul>
     </li>

@@ -13,10 +13,10 @@
 							Apagar
 							<i class="mdi-action-highlight-remove right"></i>
 						</button>
-						<a ui-sref="home.importJogos" class="btn cyan waves-effect waves-light " type="submit" name="action">
+						<!-- <a ui-sref="home.importJogos" class="btn cyan waves-effect waves-light " type="submit" name="action">
 							Importa
 							<i class="mdi-file-file-upload right"></i>
-						</a>
+						</a> -->
 					</div>
 				</div>
 			</div>
@@ -132,10 +132,6 @@
 						<th>GMC</th>
 						<th>GMF</th>
 						<th>Opções</th>
-					<!-- 	<th>DPC</th>
-						<th>DPF</th>
-						<th>ABMA</th>
-						<th>ABMN</th> -->
 					</tr>
 				</thead>
 
@@ -143,7 +139,7 @@
 					<tr ng-repeat="jogo in $ctrl.jogos | filter: $ctrl.filter">
 						<td>{{$index}}</td>
 						<td>{{jogo.casa}} x {{jogo.fora}}</td>
-						<td>{{jogo.data | date:'dd-MM-YY'}}</td>
+						<td>{{jogo.data | date:'dd-MM-yy'}}</td>
 						<td>{{jogo.hora}}</td>
 						<td>{{jogo.bCasa}}</td>
 						<td>{{jogo.emp}}</td>

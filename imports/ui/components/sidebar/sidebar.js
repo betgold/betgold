@@ -13,10 +13,15 @@ class sidebarCtrl{
 			if (result) {
 				this.user = result;
 				$rootScope.user = result;
+				if (this.user.tipo != 'operador') {
+					this.admin = true;
+				}
+				$('body').addClass('loaded');
 			}else {
 				this.state.go('login');
 			}
 		});
+		Meteor.subscribe('bancaId');
 	}
 	init(){
 		$('.collapsible').collapsible();

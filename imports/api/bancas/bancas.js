@@ -98,18 +98,5 @@ Meteor.methods({
 	removeBanca (id){
 		Meteor.users.remove({_id: id});
 		return true;
-	},
-	addJogo (jogo){
-		Bancas.update({ adminId: Meteor.userId()},{
-  		$push: {jogos: jogo}
-  		});
-	},
-	addOperador: function (op,login) {
-		var userId = Accounts.createUser(login);
-		op.userId = userId;
-		Bancas.update({userId: Meteor.userId()}, {
-			$push: {operadores: op}
-		});
-		return true;
 	}
 });

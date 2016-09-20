@@ -4,7 +4,7 @@ import angularMeteor from 'angular-meteor';
 import template from './sidebar.html';
 
 class sidebarCtrl{
-	constructor($scope,$reactive,$state){
+	constructor($scope,$reactive,$state,$rootScope){
 		'ngInject';
 		$reactive(this).attach($scope);
 		this.init();
@@ -13,6 +13,8 @@ class sidebarCtrl{
 			if (result) {
 				this.user = result;
 				user = result;
+				$rootScope.user = result;
+				$('body').addClass('loaded');
 			}else {
 				this.state.go('login');
 			}

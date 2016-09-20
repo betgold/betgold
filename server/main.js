@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 // API
 import '../imports/api/jogos/jogos.js';
-import '../imports/api/operadores/operadores.js';
 import '../imports/api/bancas/bancas.js';
 // import '../imports/api/files/files.js';
 import { Jogos } from '../imports/api/jogos/jogos.js';
@@ -13,10 +12,21 @@ Meteor.methods({
   	}else {
   		return false;
   	}
-
   },
   getUser: function () {
     return Meteor.users.findOne({_id: Meteor.userId()});
+  },
+  addOperador: function (op,login) {
+    op.tipo = 'operador';
+    var userId = Accounts.createUser(login);
+    Meteor.users.update({_id: userId},{
+      $set: op
+    })
+    return true;
+  },
+   removeOperador: function (id) {
+    Meteor.users.remove({_id: id});
+    return true;
   }
 });
 
@@ -33,13 +43,13 @@ Meteor.methods({
      //      }
      //      console.log("The file was saved!");
      //    });   
-    var excel = new Excel('xlsx');
-    var jogos = excel.readFile(basepath+"table.xlsx");
-    var page = jogos.SheetNames;
-    var sheet = jogos.Sheets[page[0]];
-    var options = { header : ['n', 'Jogo', 'hora' ,'bCasa','emp', 'bFora', 'ma25', 'me25' ] }
-    var json = excel.utils.sheet_to_json( sheet, options );
-    for (var i = 0; i < json.length; i++) {
+     var excel = new Excel('xlsx');
+     var jogos = excel.readFile(basepath+"table.xlsx");
+     var page = jogos.SheetNames;
+     var sheet = jogos.Sheets[page[0]];
+     var options = { header : ['n', 'Jogo', 'hora' ,'bCasa','emp', 'bFora', 'ma25', 'me25' ] }
+     var json = excel.utils.sheet_to_json( sheet, options );
+     for (var i = 0; i < json.length; i++) {
       var times = json[i].Jogo.split(" x ");
       json[i].casa = times[0];
       json[i].fora = times[1];
@@ -60,3 +70,15 @@ Meteor.methods({
         var basepath = path.resolve('.').split('.meteor')[0];       
       }   
     });
+
+Meteor.publish('bancaId', function() {
+  if(!this.userId) return null;
+  return Meteor.users.find(this.userId, {fields: {
+    bancaId: 1,
+  }});
+});
+
+Meteor.publish('users', function() {
+  return Meteor.users.find({});
+});
+

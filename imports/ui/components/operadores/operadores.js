@@ -3,19 +3,23 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import template from './operadores.html';
 // API
-import { Bancas } from '../../../api/bancas/bancas.js';
 
 class operadoresCtrl{
 	constructor($scope,$reactive,$rootScope){
 		'ngInject';
 		$reactive(this).attach($scope);
 		this.helpers({
-			banca () {
-				return Bancas.findOne({userId: Meteor.userId()});
+			operadores () {
+				Meteor.subscribe("users");
+				return Meteor.users.find({bancaId: Meteor.user().bancaId, tipo: 'operador'});
 			}
 		});
+		Meteor.subscribe("users");
+		console.log(Meteor.users.find({bancaId: Meteor.user().bancaId}).fetch());
 	}
 	save(){
+		this.op.bancaId = Meteor.user().bancaId;
+		console.log(this.op);
 		this.call('addOperador', this.op, this.login, (err, result) => {
 			console.log(result);
 			if (result) {
@@ -39,7 +43,15 @@ class operadoresCtrl{
 		
 	}
 	delete(id){
-		Operadores.remove({_id: id});
+			this.call('removeOperador',id, (err, result) => {
+			if (result) {
+				var $toastContent = $('<span>Operador removido!</span>');
+				Materialize.toast($toastContent, 5000);
+			}else {
+				var $toastContent = $('<span>Erro não foi possível remover!</span>');
+				Materialize.toast($toastContent, 5000);
+			}
+		});
 	}
 }
 
