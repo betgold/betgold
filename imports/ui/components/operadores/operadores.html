@@ -1,11 +1,11 @@
 <div>
-	<h4 class="header">Gerenciamento de Operadores</h4>
+	<h4 class="header">Gerenciamento de Vendedor</h4>
 	<div class="divider"></div>
 	<div class="card">
 		<div class="card-content">
 			<div class="row" ng-show="$ctrl.showForm">
 				<div class="col s6">
-					<h4 class="header2">INFORMAÇÕES OPERADOR</h4>
+					<h4 class="header2">INFORMAÇÕES VENDEDOR</h4>
 					<div class="row">
 						<div class="input-field col s12">
 							<input ng-model="$ctrl.op.nome" id="nome" type="text">
@@ -29,28 +29,68 @@
 						</div>
 						<div class="col s6">
 							<div class="switch">
-							Bloqueado:
-							<br> 
-							<label>
-								Não
-								<input ng-model="$ctrl.op.status" type="checkbox">
-								<span class="lever"></span> 
-								Sim
-							</label>
-						</div>
+								Bloqueado:
+								<br> 
+								<label>
+									Não
+									<input ng-model="$ctrl.op.status" type="checkbox">
+									<span class="lever"></span> 
+									Sim
+								</label>
+							</div>
 						</div>
 						<div class="col s6">
 							<div class="switch">
-							Gerente de Tabelas:
-							<br>  
-							<label>
-								Não
-								<input ng-model="$ctrl.op.gerente" type="checkbox">
-								<span class="lever"></span> 
-								Sim
-							</label>
+								Gerente de Tabelas:
+								<br>  
+								<label>
+									Não
+									<input ng-model="$ctrl.op.gerente" type="checkbox">
+									<span class="lever"></span> 
+									Sim
+								</label>
+							</div>
 						</div>
+						<br>
+						<div class="input-field col s6">
+							<input type="checkbox" id="prePago"/>
+							<label for="prePago">Pré-pago</label>
 						</div>
+						<div class="input-field col s6">
+							<input ng-model="$ctrl.op.credito" id="creditp" type="text">
+							<label for="creditp">Valor do Crédito</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="header2">ODDS PERSONALIZADOS</h4>
+						<div class="input-field col s4">
+							<input type="checkbox" id="pOdds"/>
+							<label for="pOdds"></label>
+						</div>
+						<div class="input-field col s4">
+							<select ng-model="$ctrl.op.pTipo" class="browser-default">
+								<option value="acrescimo">Acrécimo</option>
+								<option value="desconto">Desconto</option>
+							</select>
+						</div>
+						<div class="input-field col s4">
+							<input ng-model="$ctrl.op.pValor" id="porcentagem" type="text">
+							<label for="porcentagem">Porcentagem %</label>
+						</div>
+					</div>
+					<div class="row">
+						<h4 class="header2">TIPO DE PAGAMENTO</h4>
+						<div class="input-field col s12">
+							<select ng-model="$ctrl.op.pagamento" class="browser-default">
+								<option value="1">Diário</option>
+								<option value="2">Semanal</option>
+								<option value="3">Quizenal</option>
+								<option value="4">Mensal</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+
 					</div>
 				</div>
 				<div class="col s6">
@@ -139,7 +179,7 @@
 			<br>
 			<div class="divider"></div>
 			<br>
-			<h4 class="header2">Tabela de Operadores</h4>
+			<h4 class="header2">Tabela de Vendedor</h4>
 			<table class="responsive-table bordered">
 				<thead>
 					<tr>
@@ -158,25 +198,25 @@
 						<td>{{op.regiao}}</td>
 						<td>{{op.fone}}</td>
 						<td>
-						<a ng-click="$ctrl.view(op)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
-						<a ng-click="$ctrl.edit(op)" class="btn-floating waves-effect waves-light green"><i class="mdi-content-create"></i></a>
-						<a ng-click="$ctrl.delete(op._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
+							<a ng-click="$ctrl.view(op)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
+							<a ng-click="$ctrl.edit(op)" class="btn-floating waves-effect waves-light green"><i class="mdi-content-create"></i></a>
+							<a ng-click="$ctrl.delete(op._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-		</div
-	</div>
-	<!-- Modal Structure -->
-	<div id="modal-op" class="modal">
-		<div class="modal-content">
-			<h4>Novo Operador</h4>
-			<hr>
-			<p>
-				<form>
+			</div
+		</div>
+		<!-- Modal Structure -->
+		<div id="modal-op" class="modal">
+			<div class="modal-content">
+				<h4>Novo Operador</h4>
+				<hr>
+				<p>
+					<form>
 
-				</form>
-			</p>
+					</form>
+				</p>
+			</div>
 		</div>
 	</div>
-</div>
