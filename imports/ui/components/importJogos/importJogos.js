@@ -30,6 +30,8 @@ class importJogosCtrl{
 		var teste = '2';
 		this.call('convert', teste, (err,result) => {
 			for (var i = 0; result.length ; i++) {
+				Jogos.remove({bancaId: Meteor.user().bancaId});
+				result[i].bancaId = Meteor.user().bancaId;
 				Jogos.insert(result[i]);
 			}
 		});

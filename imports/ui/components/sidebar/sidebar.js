@@ -2,6 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './sidebar.html';
+import { Bancas } from '../../../api/bancas/bancas.js';
 
 class sidebarCtrl{
 	constructor($scope,$reactive,$state,$rootScope){
@@ -12,6 +13,7 @@ class sidebarCtrl{
 		this.call('getUser', (err, result) => {
 			if (result) {
 				this.user = result;
+				this.banca = Bancas.findOne({_id: this.user.bancaId});
 				$rootScope.user = result;
 				if (this.user.tipo != 'operador') {
 					this.admin = true;
