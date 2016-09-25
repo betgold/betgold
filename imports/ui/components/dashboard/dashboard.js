@@ -9,10 +9,9 @@ class dashboardCtrl{
 		'ngInject';
 		$reactive(this).attach($scope);
 
-
-
-
-
+		this.call('getApostasInfo', (err, result) => {
+			this.info = result;
+		});
 	}
 }
 

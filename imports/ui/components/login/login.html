@@ -6,25 +6,30 @@
   <br>
   <br>
   <div class="col s12">
-    <div id="card-login" class="card z-depth-4 animated bounceInDown">
+    <div id="card-login" class="card z-depth-4 grey darken-4">
       <div class="card-content">
         <div class="card-cep-header center">
-         <!-- <img src="/img/logo-nome2.png" style="width: 227px" class=""> -->
-         <p class="center login-form-text">DASHBOARD ADMINISTRATIVO BETGOLD</p>
+         <img src="/img/betgold.png" style="width: 227px" class="">
+         <p class="center login-form-text white-text">DASHBOARD ADMINISTRATIVO BETGOLD</p>
        </div>
        <div class="row">
-        <form ng-submit="$ctrl.login()" class="col s12">
+        <form ng-submit="$ctrl.login()" name="form" class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <i class="material-icons prefix">account_circle</i>
-              <input ng-model="$ctrl.credentials.username" id="icon_prefix" type="text" class="validate">
+              <i class="mdi-action-account-circle prefix white-text"></i>
+              <input class="white-text" ng-model="$ctrl.credentials.username" id="icon_prefix" type="text" class="validate">
               <label for="login">Login</label>
             </div>
             <div class="input-field col s12">
-              <i class="material-icons prefix">lock_outline</i>
-              <input ng-model="$ctrl.credentials.password" id="senha" type="password" class="validate">
+              <i class="mdi-action-lock prefix white-text"></i>
+              <input class="white-text" ng-model="$ctrl.credentials.password" id="senha" type="password" class="validate">
               <label for="senha">Senha</label>
             </div>
+          </div>
+          <div class="input-field center">
+          <button ng-click="$ctrl.login()"  ng-if="!$ctrl.loging" class="btn waves-effect waves-light verde" type="submit">Entrar<i class="mdi-action-lock-open
+ right white-text"></i>
+            </button>
           </div>
         </form>
       </div>
@@ -39,10 +44,6 @@
           <div class="circle"></div>
         </div>
       </div>
-    </div>
-    <div class="input-field">
-      <button ng-click="$ctrl.login()"  ng-if="!$ctrl.loging" class="btn waves-effect waves-light verde">Entrar<i class="material-icons right">send</i>
-      </button>
     </div>
     <div class="input-field">
       <a href="">Recuperar senha?</a>

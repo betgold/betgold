@@ -2,8 +2,10 @@ import { Meteor } from 'meteor/meteor';
 // API
 import '../imports/api/jogos/jogos.js';
 import '../imports/api/bancas/bancas.js';
-// import '../imports/api/files/files.js';
+import '../imports/api/apostas/apostas.js';
+
 import { Jogos } from '../imports/api/jogos/jogos.js';
+
 Meteor.methods({
   isAdmin: function () {
   	var admin =  Meteor.users.findOne({_id: Meteor.userId()});

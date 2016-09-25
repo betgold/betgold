@@ -50,10 +50,10 @@ class jogosCtrl{
 		this.jogoV = jogo;
 	}
 	edit (jg){
-		// this.jogo = jg;
-		// this.showForm = true;
-		// this.ed = true;
-		// $('label').addClass('active');
+		this.jogo = jg;
+		this.showForm = true;
+		this.ed = true;
+		$('label').addClass('active');
 	}
 	delete (id){
 		Jogos.remove({_id: id});
