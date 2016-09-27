@@ -9,6 +9,7 @@ class bancasCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
+		this.subscribe('bancasAll');
 		this.ed = false;
 		this.helpers({
 			bancas () {

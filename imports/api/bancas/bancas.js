@@ -83,6 +83,12 @@ if(Meteor.isServer){
 		var user = Meteor.users.findOne({_id: this.userId});
 		return Bancas.find({_id: user.bancaId});
 	});
+	Meteor.publish('bancasAll', function() {
+		var user = Meteor.users.findOne({_id: this.userId});
+		if (user.admin) {
+			return Bancas.find();
+		}
+	});
 }
 
 Meteor.methods({
