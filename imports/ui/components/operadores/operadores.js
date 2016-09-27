@@ -11,11 +11,9 @@ class operadoresCtrl{
 		this.helpers({
 			operadores () {
 				Meteor.subscribe("users");
-				return Meteor.users.find({bancaId: Meteor.user().bancaId, tipo: 'operador'});
+				return Meteor.users.find({tipo: 'operador'});
 			}
 		});
-		Meteor.subscribe("users");
-		console.log(Meteor.users.find({bancaId: Meteor.user().bancaId}).fetch());
 	}
 	save(){
 		this.op.bancaId = Meteor.user().bancaId;

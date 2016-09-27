@@ -8,6 +8,7 @@ class importJogosCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
+		this.subscribe('jogos');
 		this.helpers({
 			jogos () {
 				return Jogos.find();
@@ -30,14 +31,26 @@ class importJogosCtrl{
 		var teste = '2';
 		this.call('convert', teste, (err,result) => {
 			for (var i = 0; result.length ; i++) {
-				Jogos.remove({bancaId: Meteor.user().bancaId});
 				result[i].bancaId = Meteor.user().bancaId;
 				Jogos.insert(result[i]);
 			}
 		});
 	}
+	save(){
+		var jg = angular.copy(this.jogo);
+		delete jg._id;
+		Jogos.update({_id: this.jogo._id}, {
+			'$set': jg
+		});
+		this.showForm = false;
+	}
 	delete (id){
 		Jogos.remove({_id: id});
+	}
+	edit(jogo){
+		this.jogo = jogo;
+		this.showForm = true;
+		$('label').addClass('active');
 	}
 }
 

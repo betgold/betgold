@@ -4,11 +4,12 @@
 	<div class="card">
 		<div class="card-content">
 			<div class="row" ng-show="$ctrl.showForm">
+			<form name="form">
 				<div class="col s6">
 					<h4 class="header2">INFORMAÇÕES VENDEDOR</h4>
 					<div class="row">
 						<div class="input-field col s12">
-							<input ng-model="$ctrl.op.nome" id="nome" type="text">
+							<input ng-model="$ctrl.op.nome" id="nome" type="text" ng-required="true">
 							<label for="nome">Nome</label>
 						</div>
 						<div class="input-field col s6">
@@ -20,11 +21,11 @@
 							<label for="fone">Telefone</label>
 						</div>
 						<div class="input-field col s6">
-							<input ng-model="$ctrl.login.username" id="login" type="text">
+							<input ng-model="$ctrl.login.username" id="login" type="text" ng-required="true">
 							<label for="login">Login</label>
 						</div>
 						<div class="input-field col s6">
-							<input ng-model="$ctrl.login.password" id="senha" type="password">
+							<input ng-model="$ctrl.login.password" id="senha" type="password" ng-required="true">
 							<label for="senha">Senha</label>
 						</div>
 						<div class="col s6">
@@ -53,28 +54,28 @@
 						</div>
 						<br>
 						<div class="input-field col s6">
-							<input type="checkbox" id="prePago"/>
+							<input ng-model="prePago" type="checkbox" id="prePago"/>
 							<label for="prePago">Pré-pago</label>
 						</div>
 						<div class="input-field col s6">
-							<input ng-model="$ctrl.op.credito" id="creditp" type="text">
+							<input ng-model="$ctrl.op.credito" ng-disabled="!$ctrl.op.prePago" id="creditp" type="text">
 							<label for="creditp">Valor do Crédito</label>
 						</div>
 					</div>
 					<div class="row">
 						<h4 class="header2">ODDS PERSONALIZADOS</h4>
 						<div class="input-field col s4">
-							<input type="checkbox" id="pOdds"/>
+							<input ng-model="$ctrl.op.pOdds" type="checkbox" id="pOdds"/>
 							<label for="pOdds"></label>
 						</div>
 						<div class="input-field col s4">
-							<select ng-model="$ctrl.op.pTipo" class="browser-default">
+							<select ng-model="$ctrl.op.pTipo" ng-disabled="!$ctrl.op.pOdds" class="browser-default">
 								<option value="acrescimo">Acrécimo</option>
 								<option value="desconto">Desconto</option>
 							</select>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.pValor" id="porcentagem" type="text">
+							<input ng-model="$ctrl.op.pValor" ng-disabled="!$ctrl.op.pOdds" id="porcentagem" type="text">
 							<label for="porcentagem">Porcentagem %</label>
 						</div>
 					</div>
@@ -97,67 +98,67 @@
 					<h4 class="header2">COMISSÕES - PARTIDA NORMAL</h4>
 					<div class="row">
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.nc" id="normal" type="text">
+							<input ng-model="$ctrl.op.nc" id="normal" type="text" ng-required="true">
 							<label for="normal">COMISSÃO %</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.npm" id="pMax" type="text">
+							<input ng-model="$ctrl.op.npm" id="pMax" type="text" ng-required="true">
 							<label for="pMax">PREMIO MAX.</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.nam" id="aMax" type="text">
+							<input ng-model="$ctrl.op.nam" id="aMax" type="text" ng-required="true">
 							<label for="aMax">APOSTA MAX.</label>
 						</div>
 					</div>
 					<h4 class="header2">COMISSÕES - CASADINHA ATE 3 PARTIDAS</h4>
 					<div class="row">
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c3c" id="casadinha1" type="text">
+							<input ng-model="$ctrl.op.c3c" id="casadinha1" type="text" ng-required="true">
 							<label for="casadinha1">COMISSÃO %</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c3pm" id="pMax1" type="text">
+							<input ng-model="$ctrl.op.c3pm" id="pMax1" type="text" ng-required="true">
 							<label for="pMax1">PREMIO MAX.</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c3am" id="aMax1" type="text">
+							<input ng-model="$ctrl.op.c3am" id="aMax1" type="text" ng-required="true">
 							<label for="aMax1">APOSTA MAX.</label>
 						</div>
 					</div>
 					<h4 class="header2">COMISSÕES - CASADINHA DE 3 A 5 PARTIDAS</h4>
 					<div class="row">
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c35c" id="casadinha2" type="text">
+							<input ng-model="$ctrl.op.c35c" id="casadinha2" type="text" ng-required="true">
 							<label for="casadinha2">COMISSÃO %</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c35pm" id="pMax2" type="text">
+							<input ng-model="$ctrl.op.c35pm" id="pMax2" type="text" ng-required="true">
 							<label for="pMax2">PREMIO MAX.</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c35am" id="aMax2" type="text">
+							<input ng-model="$ctrl.op.c35am" id="aMax2" type="text" ng-required="true">
 							<label for="aMax2">APOSTA MAX.</label>
 						</div>
 					</div>	
 					<h4 class="header2">COMISSÕES - CASADINHA MAIS DE 5 PARTIDAS</h4>
 					<div class="row">
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c5c" id="casadinha3" type="text">
+							<input ng-model="$ctrl.op.c5c" id="casadinha3" type="text" ng-required="true">
 							<label for="casadinha3">COMISSÃO %</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c5pm" id="pMax3" type="text">
+							<input ng-model="$ctrl.op.c5pm" id="pMax3" type="text" ng-required="true">
 							<label for="pMax3">PREMIO MAX.</label>
 						</div>
 						<div class="input-field col s4">
-							<input ng-model="$ctrl.op.c5am" id="aMax3" type="text">
+							<input ng-model="$ctrl.op.c5am" id="aMax3" type="text" ng-required="true">
 							<label for="aMax3">APOSTA MAX.</label>
 						</div>
 					</div>							
 				</div>
 				<div class="col s12">
 					<div class="right">             
-						<button ng-click="$ctrl.save()" class="btn cyan waves-effect waves-light ">
+						<button ng-click="$ctrl.save()" ng-disabled="form.$invalid" class="btn cyan waves-effect waves-light ">
 							<i class="mdi-content-save"></i>
 						</button>
 						<button ng-click="addCancel()" class="btn red waves-effect waves-light ">
@@ -165,6 +166,7 @@
 						</button>
 					</div>
 				</div>
+				</form>
 			</div>
 
 			<div class="row" ng-show="!$ctrl.showForm">
@@ -205,18 +207,5 @@
 					</tr>
 				</tbody>
 			</table>
-			</div
-		</div>
-		<!-- Modal Structure -->
-		<div id="modal-op" class="modal">
-			<div class="modal-content">
-				<h4>Novo Operador</h4>
-				<hr>
-				<p>
-					<form>
-
-					</form>
-				</p>
-			</div>
 		</div>
 	</div>

@@ -56,8 +56,10 @@ Meteor.methods({
       json[i].casa = times[0];
       json[i].fora = times[1];
       delete json[i].Jogo;
+      json[i].bancaId = Meteor.user().bancaId;
     }
     json.splice(0,1);
+    Jogos.remove({bancaId: Meteor.user().bancaId})
     return json;
   }
 })
@@ -81,6 +83,7 @@ Meteor.publish('bancaId', function() {
 });
 
 Meteor.publish('users', function() {
-  return Meteor.users.find({});
+  var user = Meteor.users.findOne({_id: this.userId});
+  return Meteor.users.find({bancaId: user.bancaId});
 });
 

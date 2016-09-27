@@ -8,6 +8,7 @@ class sidebarCtrl{
 	constructor($scope,$reactive,$state,$rootScope){
 		'ngInject';
 		$reactive(this).attach($scope);
+		this.subscribe('bancas');
 		this.init();
 		this.state = $state;
 		this.call('getUser', (err, result) => {
@@ -24,6 +25,7 @@ class sidebarCtrl{
 			}
 		});
 		Meteor.subscribe('bancaId');
+		
 	}
 	init(){
 		$('.collapsible').collapsible();

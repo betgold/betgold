@@ -2,7 +2,7 @@
   <div class="card-content">
     <form>
       <div class="row">
-      <div class="file-field input-field col s6">
+        <div class="file-field input-field col s6">
           <div class="btn blue">
             <span>Planilha</span>
             <input id="table" type="file" multiple>
@@ -12,49 +12,94 @@
           </div>
         </div>
         <div class="input-field col s6">
-            <button ng-click="$ctrl.sendData(event)" class="btn green">Enviar</button>
+          <button ng-click="$ctrl.sendData(event)" class="btn green">Enviar</button>
+        </div>
+      </div>
+    </form>
+    <form ng-show="$ctrl.showForm">
+      <div class="row">
+        <div class="input-field col s12 l2">
+          <input ng-model="$ctrl.jogo.casa" id="time-casa" type="text" class="validate">
+          <label for="time-casa" class="">Time Casa</label>
+        </div>
+        <div class="input-field col s12 l2">
+          <input ng-model="$ctrl.jogo.fora" id="time-fora" type="text" class="validate">
+          <label for="time-fora" class="">Time Fora</label>
+        </div>
+        <div class="input-field col s12 l2">
+          <input ng-model="$ctrl.jogo.hora" id="hora" type="text" class="validate">
+          <label for="hora" class="">Hora</label>
+        </div>
+        <div class="input-field col s6 l2">
+          <input ng-model="$ctrl.jogo.bCasa" id="casa" type="text" class="validate">
+          <label for="casa" class="">CASA</label>
+        </div>
+        <div class="input-field col s6 l2">
+          <input ng-model="$ctrl.jogo.emp" id="emp" type="text" class="validate">
+          <label for="emp" class="">EMP</label>
+        </div>
+        <div class="input-field col s6 l2">
+          <input ng-model="$ctrl.jogo.bFora" id="fora" type="text" class="validate">
+          <label for="fora" class="">FORA</label>
+        </div>
+        <div class="input-field col s6 l2">
+          <input ng-model="$ctrl.jogo.ma25" id="+gol" type="text" class="validate">
+          <label for="+gol" class="">+2.5</label>
+        </div>
+        <div class="input-field col s6 l2">
+          <input ng-model="$ctrl.jogo.me25" id="-gol" type="text" class="validate">
+          <label for="-gol" class="">-2.6</label>
+        </div>
+        <div class="col s12">
+          <div class="right">             
+          <button ng-click="$ctrl.save()" class="btn cyan waves-effect waves-light ">
+              <i class="mdi-content-save"></i>
+            </button>
+            <button ng-click="$ctrl.showForm = false" class="btn red waves-effect waves-light ">
+              <i class="mdi-content-clear"></i>
+            </button>
+          </div>
         </div>
       </div>
     </form>
     <div class="divider"></div>
-      <br>
-      <h4 class="header2">Tabela de Jogos</h4>
-      <div class="row">
-        <div class="input-field col s6">
-          <input ng-model="$ctrl.filter" type="text" placeholder="Pesquisar...">
-        </div>
+    <br>
+    <h4 class="header2">Tabela de Jogos</h4>
+    <div class="row">
+      <div class="input-field col s6">
+        <input ng-model="$ctrl.filter" type="text" placeholder="Pesquisar...">
       </div>
-      <table class="responsive-table bordered">
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Jogo</th>
-            <!-- <th>Data</th> -->
-            <th>Hora</th>
-            <th>Casa</th>
-            <th>Emp</th>
-            <th>Fora</th>
-            <th>+2.5</th>
-            <th>-2.5</th>
-          </tr>
-        </thead>
+    </div>
+    <table class="responsive-table bordered">
+      <thead>
+        <tr>
+          <th>N°</th>
+          <th>Jogo</th>
+          <!-- <th>Data</th> -->
+          <th>Hora</th>
+          <th>Casa</th>
+          <th>Emp</th>
+          <th>Fora</th>
+          <th>+2.5</th>
+          <th>-2.5</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr ng-repeat="jogo in $ctrl.jogos | filter: $ctrl.filter">
-            <td>{{jogo.n}}</td>
-            <td>{{jogo.casa}} x {{jogo.fora}}</td>
-            <!-- <td>{{jogo.data | date:'dd-MM-YY'}}</td> -->
-            <td>{{jogo.hora}}</td>
-            <td>{{jogo.bCasa}}</td>
-            <td>{{jogo.emp}}</td>
-            <td>{{jogo.bFora}}</td>
-            <td>{{jogo.ma25}}</td>
-             <td>{{jogo.me25}}</td>
-            <td>
-              <a ng-click="$ctrl.view(jogo)" class="btn-floating waves-effect waves-light blue"><i class="mdi-action-visibility"></i></a>
-              <a ng-click="$ctrl.edit(jogo)" class="btn-floating waves-effect waves-light verde"><i class="mdi-editor-border-color"></i></a>
-              <a ng-click="$ctrl.delete(jogo._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
-            </td>
+      <tbody>
+        <tr ng-repeat="jogo in $ctrl.jogos | filter: $ctrl.filter">
+          <td>{{jogo.n}}</td>
+          <td>{{jogo.casa}} x {{jogo.fora}}</td>
+          <!-- <td>{{jogo.data | date:'dd-MM-YY'}}</td> -->
+          <td>{{jogo.hora}}</td>
+          <td>{{jogo.bCasa}}</td>
+          <td>{{jogo.emp}}</td>
+          <td>{{jogo.bFora}}</td>
+          <td>{{jogo.ma25}}</td>
+          <td>{{jogo.me25}}</td>
+          <td>
+            <a ng-click="$ctrl.edit(jogo)" class="btn-floating waves-effect waves-light verde"><i class="mdi-editor-border-color"></i></a>
+            <a ng-click="$ctrl.delete(jogo._id)" class="btn-floating waves-effect waves-light red"><i class="mdi-action-delete"></i></a>
+          </td>
             <!-- <td>{{jogo.dpc}}</td>
             <td>{{jogo.dpf}}</td>
             <td>{{jogo.ambm}}</td>
@@ -62,5 +107,5 @@
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
-</div>

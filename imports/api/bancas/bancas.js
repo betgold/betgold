@@ -64,19 +64,26 @@ BancaSchema = new SimpleSchema({
 		type: Date,
 		label: "Criado Em",
 		autoValue: function () {
-			 return new Date()
+			return new Date()
 		}
 	},
 	autor:{
 		type: String,
 		label: "Autor",
 		autoValue: function () {
-			 return this.userId
+			return this.userId
 		}
 	}
 });
 
 // Bancas.attachSchema( BancaSchema );
+
+if(Meteor.isServer){
+	Meteor.publish('bancas', function() {
+		var user = Meteor.users.findOne({_id: this.userId});
+		return Bancas.find({_id: user.bancaId});
+	});
+}
 
 Meteor.methods({
 	addBanca: function (banca,login) {
