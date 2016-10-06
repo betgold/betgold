@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import template from './operadores.html';
+import template from './operadores.ng.html';
 // API
 
 class operadoresCtrl{

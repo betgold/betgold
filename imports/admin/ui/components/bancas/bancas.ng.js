@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
-import template from './bancas.html';
+import template from './bancas.ng.html';
 import { Accounts } from 'meteor/accounts-base';
 import { Bancas } from '../../../../api/bancas/bancas.js';
 

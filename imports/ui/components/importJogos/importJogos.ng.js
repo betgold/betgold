@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './importJogos.html';
+import template from './importJogos.ng.html';
 import { Jogos } from '../../../api/jogos/jogos.js';
 class importJogosCtrl{
 	constructor($scope,$reactive){

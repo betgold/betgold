@@ -2,31 +2,35 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './admin.html';
+import template from './dashboard.ng.html';
 
-class adminCtrl{
+class dashboardCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
+
+		this.call('getApostasInfo', (err, result) => {
+			this.info = result;
+		});
 	}
 }
 
-const name = 'admin';
+const name = 'dashboard';
 
 export default angular.module(name, [
 	angularMeteor,
 	uiRouter
 	]).component(name, {
 		templateUrl:template,
-		controller: adminCtrl
+		controller: dashboardCtrl
 	}).config(config);
 
 	function config($stateProvider) {
 		'ngInject';
 		$stateProvider
-		.state('admin', {
-			url: '/admin',
-			template: '<admin></admin>'
+		.state('home.dashboard', {
+			url: '/dashboard',
+			template: '<dashboard></dashboard>'
 		});
 	}
 

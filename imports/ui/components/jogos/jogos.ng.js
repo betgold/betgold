@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './jogos.html';
+import template from './jogos.ng.html';
 
 import { Jogos } from '../../../api/jogos/jogos.js';
 import { Bancas } from '../../../api/bancas/bancas.js';

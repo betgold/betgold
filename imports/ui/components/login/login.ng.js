@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import { Accounts } from 'meteor/accounts-base';
 
-import template from './login.html';
+import template from './login.ng.html';
 
 class loginCtrl{
 	constructor($scope,$reactive, $state){

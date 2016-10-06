@@ -1,7 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import template from './sidebar.html';
+import template from './sidebar.ng.html';
 import { Bancas } from '../../../api/bancas/bancas.js';
 
 class sidebarCtrl{

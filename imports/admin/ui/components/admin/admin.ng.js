@@ -2,31 +2,31 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
-import template from './mapa.html';
+import template from './admin.ng.html';
 
-class mapaCtrl{
+class adminCtrl{
 	constructor($scope,$reactive){
 		'ngInject';
 		$reactive(this).attach($scope);
 	}
 }
 
-const name = 'mapa';
+const name = 'admin';
 
 export default angular.module(name, [
 	angularMeteor,
 	uiRouter
 	]).component(name, {
 		templateUrl:template,
-		controller: mapaCtrl
+		controller: adminCtrl
 	}).config(config);
 
 	function config($stateProvider) {
 		'ngInject';
 		$stateProvider
-		.state('home.mapa', {
-			url: '/mapa',
-			template: '<mapa></mapa>'
+		.state('admin', {
+			url: '/admin',
+			template: '<admin></admin>'
 		});
 	}
 
